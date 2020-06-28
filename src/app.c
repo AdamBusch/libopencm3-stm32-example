@@ -14,7 +14,7 @@
 // Function prototypes
 void setup_clocks(void);
 void setup_gpio(void);
-
+int main(void);
 
 /*
  *
@@ -47,7 +47,7 @@ int main(void)
     {
         gpio_toggle(PCB_LED_GPIO_PORT, GREEN_LED_GPIO_PIN | RED_LED_GPIO_PIN);
         for(i = 0; i < 1800000; i ++)
-            asm("nop");
+                asm("nop");
         while(gpio_get(USER_BUTTON_GPIO_PORT, USER_BUTTON_GPIO_PIN));
 
     }

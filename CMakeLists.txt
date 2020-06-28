@@ -1,8 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(PER_Template
+project(PER_Bootloader
         VERSION 1.0)
-enable_language(C)
+enable_language(C ASM)
 
 if(CMAKE_CROSSCOMPILING)
     message(STATUS "Crosscompiling with ${CMAKE_TOOLCHAIN_FILE}")
@@ -33,10 +33,8 @@ ${COMMON_WARNINGS} \
 ${ARCH_FLAGS}")
 
 # Setup linker script for our board as well as linker flags for arm-none-eabi-ld
-set(LDSCRIPT "${CMAKE_SOURCE_DIR}/stm32f429i-disco.ld")
 set(CMAKE_EXE_LINKER_FLAGS " \
 ${ARCH_FLAGS} \
--T${LDSCRIPT} \
 -nostartfiles \
 --specs=nano.specs \
 --specs=nosys.specs \

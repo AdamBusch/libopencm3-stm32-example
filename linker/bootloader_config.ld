@@ -24,10 +24,22 @@
 /* Define memory regions. */
 MEMORY
 {
-	rom (rx) : ORIGIN = 0x08000000, LENGTH = 2048K
- 	ccm (rwx) : ORIGIN = 0x10000000, LENGTH = 64K
-	ram (rwx) : ORIGIN = 0x20000000, LENGTH = 192K
+    /* We will only allocate a small section of flash to our bootloader. */
+	/* rom (rx) : ORIGIN = 0x08000000, LENGTH = 2048K */
+	bootloader_rom (rwx) :  ORIGIN = 0x08000000, LENGTH = 10K
+	shared_rom (rw) :       ORIGIN = 0x08002800, LENGTH = 2k
+	application_rom (rwx):  ORIGIN = 0x08003000, LENGTH = 2000k
+
+ 	ccm (rwx) :             ORIGIN = 0x10000000, LENGTH = 64K
+	ram (rwx) :             ORIGIN = 0x20000000, LENGTH = 192K
 }
 
-/* Include the common ld script. */
+application_address = ORIGIN(application_rom);
+application_size = LENGTH(application_rom);
+
+shared_address = ORIGIN(shared_rom);
+shared_size = LENGTH(shared_rom);
+
+REGION_ALIAS("rom",   bootloader_rom);
+
 INCLUDE cortex-m-generic.ld
