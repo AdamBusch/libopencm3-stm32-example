@@ -24,7 +24,7 @@ set(CORE_FLAGS "-mthumb -mcpu=cortex-m4")
 set(ARCH_FLAGS "${CORE_FLAGS} -mfloat-abi=hard -mfpu=fpv4-sp-d16")
 
 # Common assembly compilation flags for all *.s files
-set(CMAKE_ASM_FLAGS "-D__ASSEMBLY__ ${CORE_FLAGS}")
+set(CMAKE_ASM_FLAGS "-D__ASSEMBLY__ -g -Fdwarf ${CORE_FLAGS}")
 
 # Global C compile flags
 set(CMAKE_C_FLAGS " \

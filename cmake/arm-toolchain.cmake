@@ -2,9 +2,11 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 set(CMAKE_SYSTEM_NAME Generic)
 set(CMAKE_SYSTEM_PROCESSOR arm)
 
-set(CMAKE_C_COMPILER arm-none-eabi-gcc)
-set(OBJCOPY arm-none-eabi-objcopy)
-set(OBJ_SIZE arm-none-eabi-size)
+set(ARM_NONE_EABI_TOOLCHAIN_PATH "C:/Program Files (x86)/GNU Arm Embedded Toolchain/9 2020-q2-update/bin")
+
+set(CMAKE_C_COMPILER ${ARM_NONE_EABI_TOOLCHAIN_PATH}/arm-none-eabi-gcc.exe)
+set(OBJCOPY ${ARM_NONE_EABI_TOOLCHAIN_PATH}/arm-none-eabi-objcopy.exe)
+set(OBJ_SIZE ${ARM_NONE_EABI_TOOLCHAIN_PATH}/arm-none-eabi-size.exe)
 
 
 

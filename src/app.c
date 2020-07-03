@@ -40,13 +40,11 @@ int main(void)
     setup_clocks();
     setup_gpio();
 
-    gpio_set(PCB_LED_GPIO_PORT, RED_LED_GPIO_PIN);
-
     int i = 0;
     while(1)
     {
-        gpio_toggle(PCB_LED_GPIO_PORT, GREEN_LED_GPIO_PIN | RED_LED_GPIO_PIN);
-        for(i = 0; i < 1800000; i ++)
+        gpio_toggle(PCB_LED_GPIO_PORT, GREEN_LED_GPIO_PIN);
+        for(i = 0; i < 18000000; i ++)
                 asm("nop");
         while(gpio_get(USER_BUTTON_GPIO_PORT, USER_BUTTON_GPIO_PIN));
 

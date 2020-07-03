@@ -9,9 +9,13 @@
 .syntax unified
 .section .text
 .global reset_handler
-
+.global jump_to_app
 
 reset_handler:
+
+    b bootloader_main
+
+jump_to_app:
     ldr r0, =application_address
     ldr r1, =SCB_VTOR
     str r0, [r1]
@@ -21,3 +25,8 @@ reset_handler:
     bx r0
 
     b bootloader_main
+
+
+
+
+
